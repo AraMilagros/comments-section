@@ -1,0 +1,42 @@
+.containerComment{
+    border:2px solid green;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.comment{
+    max-width: 30%;
+    display: grid;
+    border:2px solid red;
+
+}
+
+.header{
+    border:2px solid gold;
+    display: flex;
+    flex-direction: row;
+
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.bodyComment{
+    border:2px solid black;
+
+    grid-column: 2/4;
+    grid-row: 2/4;
+}
+
+.contadorLikes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:2px solid aquamarine;
+    grid-column: 1/2;
+    grid-row: 1/4;
+}
+.reply{
+    border:2px solid wheat;
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
