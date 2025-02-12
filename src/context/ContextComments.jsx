@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-// import PropTypes from "prop-types";
+import data from './data.json';
 
 const AppContext = createContext();
 
