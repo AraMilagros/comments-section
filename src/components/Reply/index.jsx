@@ -3,7 +3,7 @@ import estilos from './estilos.module.css';
 export default function index() {
 
     return (
-        <div className={estilos.containerReply}>
+        <div className={estilos.container}>
             <div className={estilos.reply}>
                 <img src="" alt="img-perfil"/>
 
