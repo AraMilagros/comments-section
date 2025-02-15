@@ -1,9 +1,10 @@
-import estilos from './estilos.module.css';
+import './estilos.css'
+import Component from '../Comment'
 
 export default function index() {
     return (
-        <main className={estilos.main}>
-            <h1>Principal</h1>
+        <main className='main'>
+            <Component />
         </main>
     );
 }
