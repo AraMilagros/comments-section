@@ -3,26 +3,29 @@ import estilos from './estilos.module.css';
 import { useState } from 'react';
 import ReplyComment from '../Reply';
 import ElementComment from '../ElementComment';
+import { useAppContext } from '../../context/ContextComments';
 
 export default function index(props) {
 
-  const [reply, setReply] = useState(true);
+  const {userActual} = useAppContext();
+
+  const [reply, setReply] = useState(false);
 
   const replyComment = () => {
-    console.log(reply)
     setReply(!reply);
 
   }
 
   return (
     <>
-      <div className={estilos.containerComment}>
+      <div className={estilos.containerComment} >
         <ElementComment key={Math.random()}
           likes={props.likes}
           username={props.username}
           time={props.time}
           text={props.text}
           onClickReply={replyComment}
+          parentId={props.parentId}
         />
       </div>
 
@@ -42,8 +45,7 @@ export default function index(props) {
           )
         })
       }
-      {/* {reply ? <ReplyComment /> : ''} */}
-      {reply ?  <ReplyComment/> : ''}
+      {reply ?  <ReplyComment username={userActual} id={props.parentId} type={"reply"}/> : ''}
     </>
   )
 }

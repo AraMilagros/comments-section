@@ -1,14 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import data from './data.json';
-
 const AppContext = createContext();
 
 export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
-    const [comments, setComments] = useState([]);
+    const [userActual, setUserActual] = useState('amyrobson');
+    const [comments, setComments] = useState(data);
+    const [commentsduplicado, setCommentsDuplicado] = useState(data);
 
-    const addComment = (text, username, imgperfil, parentId = null) => {
+    useEffect(()=>{
+        setComments(commentsduplicado);
+    },[setCommentsDuplicado])
+
+    const addComment = (commentsList, text, username, imgperfil, parentId = null) => {
         const newComment = {
             id: Math.random(),
             username,
@@ -18,32 +24,28 @@ export const AppProvider = ({ children }) => {
         };
 
         if(parentId === null){
-            setComments([...comments, newComment]);
+            console.log('entro aqui')
+            setComments([...commentsList, newComment]);
         }else{
             setComments(addReply(comments, parentId, newComment));
         }
+        console.log(comments)
     };
 
     const addReply = (commentsList, parentId, reply) => {
         console.log("reply add");
-        return commentsList.map(comment => {
-            if(comment.id === parentId){
-                return {...comment, replies: [...comment.replies, reply]};
-            }else if(comment.replies.length > 0){
-                return {...comment, replies: addReply(comment.replies, parentId, reply)};
-            }
-            return comment;
-        });
+        console.log("id ",parentId,". text: ", reply);
     };
 
 
     return (
-        <AppContext.Provider value={{ user, setUser }}>
+        <AppContext.Provider value={{ userActual, comments, setComments, addComment, addReply }}>
             {children}
         </AppContext.Provider>
     );
 };
 
-// AppProvider.prototype = {
-//     children: PropTypes.node,
-// };
+AppProvider.prototype = {
+    children: PropTypes.node,
+};
+

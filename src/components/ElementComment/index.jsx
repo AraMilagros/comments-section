@@ -16,7 +16,7 @@ export default function index(props) {
             <div className={estilos.bodyComment}>
                 <p>{props.text}</p>
             </div>
-            <div className={estilos.reply} onClick={() => props.onClickReply()}>
+            <div className={estilos.reply} onClick={() => props.onClickReply(props.parentId)}>
                 ↪ Reply
             </div>
         </div>

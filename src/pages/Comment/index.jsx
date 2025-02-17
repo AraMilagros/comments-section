@@ -1,13 +1,16 @@
 import estilos from './estilos.module.css';
-import data from './data.json';
 import ItemComment from '../../components/ItemComment';
-
+import { useAppContext } from '../../context/ContextComments';
+import Reply from '../../components/Reply';
 export default function index(){
+    const {comments, userActual} = useAppContext();
+
     return(
         <div className={estilos.contenedor}>
-            {data.map((item, id)=>{
+            {comments.map((item, id)=>{
                 return(
                     <ItemComment key={Math.random()}
+                        parentId={item.parentId}
                         likes={item.likes}
                         imgperfil={item.imgperfil}
                         username={item.username}
@@ -17,6 +20,7 @@ export default function index(){
                     />
                 )
             })}
+            <Reply username={userActual} type={"comment"}/>
         </div>
     )
 }

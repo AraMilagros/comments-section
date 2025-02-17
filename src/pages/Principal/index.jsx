@@ -1,4 +1,5 @@
 import './estilos.css'
+
 import Component from '../Comment'
 
 export default function index() {
