@@ -24,7 +24,7 @@ export default function index(props) {
                 <p>{props.text}</p>
             </div>
             {/* Btn que permite replicar al comentario */}
-            <div className={estilos.reply} onClick={() => props.onClickReply(props.parentId)}>
+            <div className={estilos.reply} onClick={() => props.onClickReply(props.username)}>
                 ↪ Reply
             </div>
         </div>

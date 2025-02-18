@@ -1,12 +1,13 @@
 
 import estilos from './estilos.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReplyComment from '../Reply';
 import ElementComment from '../ElementComment';
 import { useAppContext } from '../../context/ContextComments';
 
 export default function index(props) {
 
+  const [userReply, setUserReply] = useState();
   const {userActual} = useAppContext();
   // estado para mostrar o no el componente Reply
   // es decir, en caso de que el usuario quiera replicar un comentario se cambiará el estado a true
@@ -14,7 +15,8 @@ export default function index(props) {
   const [reply, setReply] = useState(false);
 
   // function encargada de cambiar el estado del usestate 
-  const replyComment = () => {
+  const replyComment = (username) => {
+    setUserReply(username)
     setReply(!reply);
 
   }
@@ -73,7 +75,7 @@ export default function index(props) {
             mientras que en caso de ser un reply de un comentario existente, en vez de un placeholder, se mostrar el input con un valor
             determinado, por ejemplo con el "@nombreuser" representado el nombre del usuario del comentario a replicar
        */}
-      {reply ? <ReplyComment username={userActual} id={props.parentId} type={"reply"} userReply={props.username} /> : ''}
+      {reply ? <ReplyComment username={userActual} id={props.parentId} type={"reply"} userReply={userReply} /> : ''}
     </>
   )
 }

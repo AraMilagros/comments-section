@@ -26,15 +26,27 @@ export const AppProvider = ({ children }) => {
         if(parentId === null){
             console.log('entro aqui')
             setComments([...commentsList, newComment]);
-        }else{
-            setComments(addReply(comments, parentId, newComment));
         }
-        console.log(comments)
     };
 
-    const addReply = (commentsList, parentId, reply) => {
+    const addReply = (commentsList, parentId, reply, username, imgperfil) => {
         console.log("reply add");
         console.log("id ",parentId,". text: ", reply);
+
+        const newReply = {
+            id: Math.random(),
+            reply,
+            username,
+            imgperfil
+        }
+
+        setComments((prev)=>
+            prev.map((item)=>
+                item.parentId == parentId 
+                ? { ...item, replies: [...item.replies, newReply]}
+                : item
+            )
+        )
     };
 
 
