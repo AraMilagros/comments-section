@@ -1,11 +1,11 @@
 import './estilos.css'
 
-import Component from '../Comment'
+import Comment from '../Comment'
 
 export default function index() {
     return (
         <main className='main'>
-            <Component />
+            <Comment />
         </main>
     );
 }

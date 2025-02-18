@@ -6,7 +6,7 @@ import { useState } from 'react';
 export default function index(props) {
     const {comments, addReply, addComment, userActual} = useAppContext();
 
-    const [textReply, setTextReply] = useState(props.type == 'reply' ? '@hello ' : '');
+    const [textReply, setTextReply] = useState(props.type == 'reply' ? `@${props.userReply} ` : '');
 
     return (
         <div className={estilos.container}>
