@@ -9,13 +9,9 @@ export const useAppContext = () => useContext(AppContext);
 export const AppProvider = ({ children }) => {
     const [userActual, setUserActual] = useState('amyrobson');
     const [commentsList, setCommentsList] = useState(data);
-    // const [commentsduplicado, setCommentsDuplicado] = useState(data);
-
-    // useEffect(()=>{
-    //     setCommentsList(commentsduplicado);
-    // },[setCommentsDuplicado])
 
     const addComment = (comments, text, username, imgperfil, parentId = null) => {
+        console.log("ENTRO CONTEXT ADD COMMENT")
         const newComment = {
             id: Math.random(),
             username,
@@ -66,8 +62,13 @@ export const AppProvider = ({ children }) => {
         console.log("editar REPLY")
     }
 
+    const likeDislike = (id, action) => {
+        console.log('en context');
+        console.log('id: ',id,' action: ',action);
+    }
+
     return (
-        <AppContext.Provider value={{ userActual, commentsList, addComment, addReply, deleteComment, deleteReply, editComment, editReply}}>
+        <AppContext.Provider value={{ userActual, commentsList, addComment, addReply, deleteComment, deleteReply, editComment, editReply, likeDislike}}>
             {children}
         </AppContext.Provider>
     );

@@ -72,3 +72,8 @@
 
     cursor: pointer;
 }
+
+.active{
+    color: var(--darkBlue) !important;
+    border:2px solid yellow;
+}

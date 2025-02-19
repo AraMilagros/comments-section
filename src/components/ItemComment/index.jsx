@@ -5,7 +5,7 @@ import ReplyComment from '../Reply';
 import ElementComment from '../ElementComment';
 import { useAppContext } from '../../context/ContextComments';
 
-export default function index(props) {
+export default function index() {
 
   const [userReply, setUserReply] = useState();
   const { userActual, commentsList } = useAppContext();
@@ -16,9 +16,9 @@ export default function index(props) {
 
   // function encargada de cambiar el estado del usestate 
   const replyComment = (username) => {
+    console.log(username);
     setUserReply(username)
     setReply(!reply);
-
   }
 
   return (
@@ -27,23 +27,37 @@ export default function index(props) {
       {commentsList.map(comment => (
         <>
           <div className={estilos.containerComment} >
-            <ElementComment {...comment} />
+            <ElementComment comment={comment} type={'comment'} onClickReply={replyComment} />
           </div>
 
-          {comment.replies?.length > 0 && (
+          {/* {comment.replies?.length > 0 && (
             comment.replies.map(reply => (
               <div className={estilos.containerReply}>
-                <ElementComment {...reply}/>
+                <ElementComment comment={reply} type={'reply'} onClickReply={replyComment} />
               </div>
             ))
-          ) }
+          )} */}
         </>
 
       ))
       }
 
+      {
+        commentsList.map(comment => (
+          comment.replies?.length > 0 && (
+            comment.replies.map(reply => {
+              return(
+                <div className={estilos.containerReply}>
+                  <ElementComment comment={reply} type={'reply'} onClickReply={replyComment} />
+                </div>
+              )
+            })
+          )
+        ))
+      }
 
-      {reply ? <ReplyComment username={userActual} id={props.parentId} type={"reply"} userReply={userReply} /> : ''}
+      {reply ? <ReplyComment type={"reply"} userReply={userReply} /> : ''}
+ 
     </>
   )
 }

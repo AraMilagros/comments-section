@@ -11,12 +11,12 @@ export default function index(props) {
     return (
         <div className={estilos.container}>
             <div className={estilos.reply}>
-                {<Imagen nombre={props.username} />}
+                {<Imagen nombre={userActual} />}
 
                 <textarea cols={10} rows={4} value={textReply} onChange={(e) => setTextReply(e.target.value)} placeholder={props.type == 'comment' ? 'Add comment...' : ''}></textarea>
-                <button className={estilos.btnReply}
-                    onClick={props.type == 'comment' ? () => addComment(comments, textReply, userActual, userActual, null) : () => addReply(comments, props.id, textReply)}>
-                    {props.type == 'comment' ? 'SEND' : 'REPLY'}</button>
+                <button className={estilos.btnReply}>
+                    {props.type == 'comment' ? 'SEND' : 'REPLY'}
+                </button>
             </div>
         </div>
     )
