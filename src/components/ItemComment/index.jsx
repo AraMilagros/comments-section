@@ -57,7 +57,7 @@ export default function index() {
       }
 
       {reply ? <ReplyComment type={"reply"} userReply={userReply} /> : ''}
- 
+
     </>
   )
 }

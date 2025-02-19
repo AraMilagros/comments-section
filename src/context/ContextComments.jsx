@@ -10,6 +10,11 @@ export const AppProvider = ({ children }) => {
     const [userActual, setUserActual] = useState('amyrobson');
     const [commentsList, setCommentsList] = useState(data);
 
+    const [commentsListDuplicado, setCommentsDuplicado]=useState(data);
+    // useEffect(()=>{
+    //     setCommentsList(commentsListDuplicado);
+    // },[setCommentsDuplicado])
+
     const addComment = (comments, text, username, imgperfil, parentId = null) => {
         console.log("ENTRO CONTEXT ADD COMMENT")
         const newComment = {
@@ -26,13 +31,13 @@ export const AppProvider = ({ children }) => {
         }
     };
 
-    const addReply = (parentId, reply, username, imgperfil) => {
+    const addReply = (parentId, text, username, imgperfil) => {
         console.log("reply add");
-        console.log("id ",parentId,". text: ", reply);
+        console.log("id ",parentId,". text: ", text);
 
         const newReply = {
             idReply: Math.random(),
-            reply,
+            text,
             username,
             imgperfil
         }
