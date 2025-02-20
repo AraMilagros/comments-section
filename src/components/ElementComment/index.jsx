@@ -7,7 +7,6 @@ import { useAppContext } from '../../context/ContextComments';
 export default function index(props) {
 
     const [bandera, setBandera] = useState(true);
-    const [contador, setContador] = useState(props.comment.likes);
     const { likeDislike, commentsList } = useAppContext();
 
     const likes = (action) => {
