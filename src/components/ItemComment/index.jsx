@@ -8,7 +8,7 @@ import { useAppContext } from '../../context/ContextComments';
 export default function index() {
 
   const [userReply, setUserReply] = useState();
-  const { userActual, commentsList } = useAppContext();
+  const { userActual, commentsDuplicado } = useAppContext();
   // estado para mostrar o no el componente Reply
   // es decir, en caso de que el usuario quiera replicar un comentario se cambiará el estado a true
   // y se mostrará el componente como se muestra en la linea del código al final de todo
@@ -24,7 +24,7 @@ export default function index() {
   return (
     <>
 
-      {commentsList.map(comment => (
+      {commentsDuplicado.map(comment => (
         <>
           <div className={estilos.containerComment} >
             <ElementComment comment={comment} type={'comment'} onClickReply={replyComment} />
@@ -43,7 +43,7 @@ export default function index() {
       }
 
       {
-        commentsList.map(comment => (
+        commentsDuplicado.map(comment => (
           comment.replies?.length > 0 && (
             comment.replies.map(reply => {
               return(
