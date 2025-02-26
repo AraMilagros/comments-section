@@ -17,7 +17,7 @@ export default function index(){
                 se envia un props "type" para distinguir si es un comentario nuevo o un reply a un comentario ya existente
                 el props de username lo envio para poder mostrar la imagen del usuario que va a comentar
             */}
-            <Reply username={userActual} type={"comment"}/>
+            <Reply username={userActual} type={"comment"} />
         </div>
     )
 }

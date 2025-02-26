@@ -6,12 +6,13 @@
     background: var(--white);
     border-radius: 9px;
     padding: 20px 25px ;
-    /* width: calc(100% - 60%); */
     margin: .5em auto;
-    /* border:2px solid red; */
+    max-width: 580px;
+    min-width: 580px;
 }
 
 .containerReply{
-    width: 90%;
-    margin: .5em 0;
+    min-width: 500px;
+    max-width: 500px;
+    margin-right: 0;
 }

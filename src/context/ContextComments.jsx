@@ -12,27 +12,27 @@ export const AppProvider = ({ children }) => {
 
 
     const [commentsDuplicado, setCommentsDuplicado] = useState(data);
-    // useEffect(()=>{
-    //     setCommentsList(commentsListDuplicado);
-    // },[setCommentsDuplicado])
 
     useEffect(() => {
         setCommentsList(commentsDuplicado);
     }, [commentsDuplicado, setCommentsDuplicado])
 
-    const addComment = (comments, text, username, imgperfil, parentId = null) => {
+    const addComment = (comments, text, username, imgperfil, type, parentId = null) => {
         console.log("ENTRO CONTEXT ADD COMMENT")
+        console.log("tipo: ", type);
         const newComment = {
-            id: Math.random(),
+            parentId: Math.random(),
+            text,
             username,
             imgperfil,
-            text,
+            likes:0,
+            time: null,
             replies: [],
         };
 
         if (parentId === null) {
             console.log('entro aqui')
-            setCommentsList([...comments, newComment]);
+            setCommentsDuplicado([...commentsList, newComment]);
         }
     };
 
@@ -47,7 +47,7 @@ export const AppProvider = ({ children }) => {
             imgperfil
         }
 
-        setCommentsList((prev) =>
+        setCommentsDuplicado((prev) =>
             prev.map((item) =>
                 item.parentId == parentId
                     ? { ...item, replies: [...item.replies, newReply] }

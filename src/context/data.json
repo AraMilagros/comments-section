@@ -9,6 +9,15 @@
         "replies": []
     },
     {
+        "parentId": "6",
+        "text": "y well.",
+        "username": "amyrobson",
+        "imgperfil": "amyrobson.png",
+        "likes": 12,
+        "time": "1 month ago",
+        "replies": []
+    },
+    {
         "parentId": "2",
         "text": "Woah, your project looks awesome! How long have you been coding for? I´m still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
         "username": "maxblagun",
@@ -20,6 +29,16 @@
                 "parentId": "2",
                 "idReply": "4",
                 "text": "@maxblagun If you´re still new, I´d recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It´s very tempting to jump ahead but lay a solid foundation first.",
+                "username": "ramsesmiron",
+                "imgperfil": "ramsesmiron.png",
+                "likes": 4,
+                "time": "1 week ago"
+
+            },
+            {
+                "parentId": "2",
+                "idReply": "43",
+                "text": "@maxblagun If  first.",
                 "username": "ramsesmiron",
                 "imgperfil": "ramsesmiron.png",
                 "likes": 4,
