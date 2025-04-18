@@ -7,7 +7,7 @@ import { useAppContext } from '../../context/ContextComments';
 export default function index(props) {
 
     const [bandera, setBandera] = useState(true);
-    const { likeDislike, commentsList } = useAppContext();
+    const { userActual, likeDislike, commentsList } = useAppContext();
 
     const likes = (action) => {
         if(bandera){
@@ -44,7 +44,7 @@ export default function index(props) {
             </div>
             {/* Btn que permite replicar al comentario */}
             <div className={estilos.reply} onClick={() => props.onClickReply(props.comment.username)}>
-                ↪ Reply
+                {props.comment.username === userActual ? '↪ Reply' : userActual}
             </div>
         </div>
     )

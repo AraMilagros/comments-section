@@ -8,6 +8,16 @@ export default function index(props) {
 
     const [textReply, setTextReply] = useState(props.type == 'reply' ? `@${props.userReply} ` : '');
 
+    const replyComment = (type) => {
+        if(type == 'comment'){
+            addComment(commentsList, textReply, userActual, userActual, type);
+            // Aqui se llama una funcion que se paso por props para limpiar el txt 
+        }else{
+            // aqui cambiar el 2 por el parentId del comment que se hizo reply
+            addReply(2, textReply, userActual, userActual);
+            // luego cambiar el bool del reply para que desaparezca el componente reply 
+        }
+    }
     return (
         <div className={estilos.container}>
             <div className={estilos.reply}>
